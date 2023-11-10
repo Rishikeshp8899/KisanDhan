@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contract List</title>
+    <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+        }
+
+        section {
+
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        img {
+            max-width: 50px;
+            max-height: 50px;
+            border-radius: 50%;
+        }
+
+        button {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .accept-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+        }
+
+        .reject-btn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+        }
+    </style>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>  
+</head>
+<body>
+    <header>
+        <i href="#" class="logo">KisanDhan</i>   
+   <nav class="navbar">
+       <a href="./index.html" class="active">Home</a>
+       <a href="./farmer.html">Farmer</a>
+       <a href="#">About</a>
+       <a href="./chart.html">Chats</a>
+       <a href="#">FeedBack</a>
+   </nav>
+   <div class="icons">
+       <i class="fas fa-bars" id="menu-bars"></i>
+       <i class="fas fa-search" id="search-icon"></i>
+       <i class="fa-solid fa-heart"></i>
+       <i class="fa-solid fa-cart-shopping"></i>
+   </div>
+       </header>
+
+    <section style="margin-top: 7%;" class="cotation">
+        <h2>Cotation List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Company Name</th>
+                    <th>Order Date</th>
+                    <th>Product Image</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                    <th>Team</th>
+                    <th>Quantity</th>
+                    <th>Conditions</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="contractTableBody">
+                <!-- Contracts will be dynamically added here using JavaScript -->
+            </tbody>
+        </table>
+    </section>
+
+    <script>
+        // Example data (replace this with your actual data)
+        const contractData = [
+            {
+                companyName: "ABC Inc.",
+                orderDate: "2023-01-15",
+                productImage: "img\is-corn-grain-1544222258.jpg",
+                price: "500",
+                description: "Lorem ipsum dolor sit amet.",
+                team: "Sales Team",
+                quantity: 10,
+                conditions: "Terms and conditions apply."
+            },
+            {
+                companyName: "XYZ Ltd.",
+                orderDate: "2023-02-20",
+                productImage: "img\download (1).jpeg",
+                price: "700",
+                description: "Consectetur adipiscing elit.",
+                team: "Marketing Team",
+                quantity: 5,
+                conditions: "Subject to approval."
+            }
+            // Add more contract data as needed
+        ];
+
+        // Function to populate the table with contract data
+        function populateTable() {
+            const tableBody = document.getElementById("contractTableBody");
+
+            contractData.forEach((contract, index) => {
+                const row = document.createElement("tr");
+
+                // Create table cells for each property
+                Object.entries(contract).forEach(([key, value]) => {
+                    const cell = document.createElement("td");
+
+                    // If the value is an image, create an img element
+                    if (key === "productImage") {
+                        const image = document.createElement("img");
+                        image.src = value;
+                        cell.appendChild(image);
+                    } else {
+                        cell.textContent = value;
+                    }
+
+                    row.appendChild(cell);
+                });
+
+                // Add "Accept" and "Reject" buttons with event listeners
+                const actionsCell = document.createElement("td");
+                const acceptButton = document.createElement("button");
+                acceptButton.textContent = "Accept";
+                acceptButton.className = "accept-btn";
+                acceptButton.addEventListener("click", () => handleAccept(index));
+
+                const rejectButton = document.createElement("button");
+                rejectButton.textContent = "Reject";
+                rejectButton.className = "reject-btn";
+                rejectButton.addEventListener("click", () => handleReject(index));
+
+                actionsCell.appendChild(acceptButton);
+                actionsCell.appendChild(rejectButton);
+
+                row.appendChild(actionsCell);
+
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Handle "Accept" button click
+        function handleAccept(index) {
+            alert(`Contract ${index + 1} accepted!`); // Replace this with your actual accept logic
+        }
+
+        // Handle "Reject" button click
+        function handleReject(index) {
+            alert(`Contract ${index + 1} rejected!`); // Replace this with your actual reject logic
+        }
+
+        // Call the function to populate the table
+        populateTable();
+    </script>
+<style>
+   
+</style>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="./script.js"></script>
+</body>
+</html>

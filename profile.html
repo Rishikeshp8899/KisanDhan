@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
+    <title>Company Photo Portfolio with Product Sidebar and Owner Info</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            margin-top: 7%;
+            display: flex;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .company-info {
+            text-align: center;
+        }
+
+        .company-logo {
+            display: block;
+            margin: 0 auto;
+            max-width: 200px;
+            height: auto;
+        }
+
+        .company-name {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .order-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: var(--green);
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .owner-info {
+            text-align: center;
+        }
+
+        .owner-photo {
+            max-width: 150px;
+            max-height: 150px;
+            border-radius: 50%;
+        }
+
+        .owner-name {
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .user-comments {
+            text-align: center;
+        }
+
+        .user-comment {
+            border: 1px solid #e0e0e0;
+            background-color: #f7f7f7;
+            padding: 10px;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .user-image {
+            max-width: 50px;
+            max-height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .user-details {
+            flex-grow: 1;
+        }
+
+        .user-name {
+            font-weight: bold;
+        }
+
+        .user-comment-text {
+            margin-top: 5px;
+        }
+
+        .product-sidebar {
+            flex-basis: 300px;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+        }
+
+        .product-card {
+            border: 1px solid #e0e0e0;
+            background-color: #f7f7f7;
+            padding: 10px;
+            margin: 10px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .product-image {
+            max-width: 100px;
+            max-height: 100px;
+        }
+
+        .product-description {
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        .product-price {
+            font-weight: bold;
+            margin: 5px 0;
+        }
+
+        .product-order-button {
+            display: block;
+            padding: 5px 10px;
+            background-color: var(--green);
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+        }
+        #header{
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 20px 60px;
+background-color: #E3E6F3;
+box-shadow: 0 5px 15px rgba(0,0,0,0.006);
+z-index: 999;
+position: sticky;
+top: 0;
+left: 0;
+}
+
+    </style>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <header>
+        <i href="#" class="logo">KisanDhan</i>   
+   <nav class="navbar">
+       <a href="./index.html" >Home</a>
+       <a href="./farmer.html" class="active">Farmer</a>
+       <a href="#">About</a>
+       <a href="./chart.html">Chats</a>
+       <a href="#">FeedBack</a>
+   </nav>
+   <div class="icons">
+       <i class="fas fa-bars" id="menu-bars"></i>
+       <i class="fas fa-search" id="search-icon"></i>
+       <i class="fa-solid fa-heart"></i>
+       <i class="fa-solid fa-cart-shopping"></i>
+   </div>
+       </header>
+<table>
+        <br>
+        <br>
+    <div class="container">
+        <div class="main-content">
+            <div class="company-info">
+                <img src="./img/chef-food-restaurant-logo-editable-design-template-949091af7f6dc8b1fc80d8669faab4d6_screen.jpg" alt="Company Logo" class="company-logo">
+                <h1 class="company-name">Company Name</h1>
+                <a href="order.html" class="order-button">Order from Company</a>
+            </div>
+            <div class="owner-info">
+                <img src="./img/farmer/images.jpeg" alt="Owner Photo" class="owner-photo">
+                <h2 class="owner-name">Owner Name</h2>
+            </div>
+            <div class="user-comments">
+                <h2>User Comments</h2>
+                <div class="user-comment">
+                    <img src="./img/download78.jpeg" alt="User 1" class="user-image">
+                    <div class="user-details">
+                        <p class="user-name">User A</p>
+                        <p class="user-comment-text">I love Product 1. It's amazing!</p>
+                    </div>
+                </div>
+                <div class="user-comment">
+                    <img src="./img/download (1)78.jpeg" alt="User 2" class="user-image">
+                    <div class="user-details">
+                        <p class="user-name">User B</p>
+                        <p class="user-comment-text">Product 2 is fantastic. I highly recommend it.</p>
+                    </div>
+                </div>
+                <!-- Add more user comments with images as needed for each product -->
+            </div>
+        </div>
+
+        <div class="product-sidebar">
+            <h2>Harvest</h2>
+            <div class="product-card">
+                <img src="./img/is-corn-grain-1544222258.jpg" alt="Product 1" class="product-image">
+                <div class="product-description">
+                    <p>Product 1 Description</p>
+                </div>
+                <div class="product-price">$19.99</div>
+                <a href="./order.html" class="product-order-button">Order</a>
+            </div>
+            <div class="product-card">
+                <img src="./img/images.jpeg" alt="Product 2" class="product-image">
+                <div class="product-description">
+                    <p>Product 2 Description</p>
+                </div>
+                <div class="product-price">$24.99</div>
+                <a href="#" class="product-order-button">Order</a>
+            </div>
+            <div class="product-card">
+                <img src="./img/images.jpeg" alt="Product 3" class="product-image">
+                <div class="product-description">
+                    <p>Product 3 Description</p>
+                </div>
+                <div class="product-price">$29.99</div>
+                <a href="#" class="product-order-button">Order</a>
+            </div>
+            <!-- Add more product cards as needed -->
+        </div>
+    </div>
+</body>
+</html>

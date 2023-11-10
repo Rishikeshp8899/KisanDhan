@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agriculture Data Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+        }
+
+        section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        canvas {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+     
+    </style>
+
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <header>
+        <i href="#" class="logo">KisanDhan</i>   
+   <nav class="navbar">
+       <a href="./index.html" class="active">Home</a>
+       <a href="./farmer.html">Farmer</a>
+       <a href="#">About</a>
+       <a href="./chart.html">Chats</a>
+       <a href="#">FeedBack</a>
+   </nav>
+   <div class="icons">
+       <i class="fas fa-bars" id="menu-bars"></i>
+       <i class="fas fa-search" id="search-icon"></i>
+       <i class="fa-solid fa-heart"></i>
+       <a href="./cart.html">
+       <i class="fa-solid fa-cart-shopping"></i></a>
+   </div>
+       </header>
+    <section style="margin-top: 7%;">
+        <h2>Agriculture Data Dashboard</h2>
+        <section class="agri">
+        <table  id="agricultureTable">
+            <thead>
+                <tr>
+                    <th>Price</th>
+                    <th>Location</th>
+                    <th>Time</th>
+                    <th>Weather</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <!-- Data will be dynamically added here using JavaScript -->
+            </tbody>
+        </table>
+    </section>
+
+        <div style="display: flex; justify-content: space-between;">
+            <canvas id="lineChart" width="400" height="200"></canvas>
+            <canvas id="barChart" width="400" height="200"></canvas>
+        </div>
+
+        <canvas id="pieChart" width="400" height="200"></canvas>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Generate fake agriculture data
+        const agricultureData = generateAgricultureData(250);
+
+        // Function to generate fake agriculture data
+        function generateAgricultureData(count) {
+            const data = [];
+            for (let i = 0; i < count; i++) {
+                data.push({
+                    price: Math.floor(Math.random() * 100) + 50, // Random price between 50 and 150
+                    location: `Location ${i + 1}`,
+                    time: i + 1,
+                    weather: Math.random() < 0.5 ? 'Sunny' : 'Rainy'
+                });
+            }
+            return data;
+        }
+
+        // Function to populate the table with agriculture data
+        function populateTable() {
+            const tableBody = document.getElementById("tableBody");
+
+            agricultureData.forEach(data => {
+                const row = document.createElement("tr");
+
+                Object.values(data).forEach(value => {
+                    const cell = document.createElement("td");
+                    cell.textContent = value;
+                    row.appendChild(cell);
+                });
+
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Function to draw line chart
+        function drawLineChart() {
+            const ctx = document.getElementById("lineChart").getContext("2d");
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: agricultureData.map(data => data.time),
+                    datasets: [{
+                        label: 'Price Trend',
+                        data: agricultureData.map(data => data.price),
+                        borderColor: 'blue',
+                        fill: false
+                    }]
+                }
+            });
+        }
+
+        // Function to draw bar chart
+        function drawBarChart() {
+            const ctx = document.getElementById("barChart").getContext("2d");
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: agricultureData.map(data => data.time),
+                    datasets: [{
+                        label: 'Weather Distribution',
+                        data: agricultureData.map(data => data.weather === 'Sunny' ? 1 : 0),
+                        backgroundColor: 'yellow',
+                        borderColor: 'orange',
+                        borderWidth: 1
+                    }]
+                }
+            });
+        }
+
+        // Function to draw pie chart
+        function drawPieChart() {
+            const ctx = document.getElementById("pieChart").getContext("2d");
+            const sunnyCount = agricultureData.filter(data => data.weather === 'Sunny').length;
+            const rainyCount = agricultureData.length - sunnyCount;
+
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Sunny', 'Rainy'],
+                    datasets: [{
+                        data: [sunnyCount, rainyCount],
+                        backgroundColor: ['yellow', 'lightblue']
+                    }]
+                }
+            });
+        }
+
+        // Call functions to populate table and draw charts
+        populateTable();
+        drawLineChart();
+        drawBarChart();
+        drawPieChart();
+    </script>
+
+<style>
+       .agri{
+            width: 500px;
+            height: 500px;
+            overflow:scroll;
+        }
+</style>
+
+<script src="./script.js"></script>
+</body>
+</html>

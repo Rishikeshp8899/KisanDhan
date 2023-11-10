@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Search and Filter Example</title>
+    <style>
+        /* Style for the filter input */
+        #filterInput {
+            margin-top: 7%;
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+
+        /* Style for the table */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>  
+</head>
+<body>
+    <header>
+        <i href="#" class="logo">KisanDhan</i>   
+   <nav class="navbar">
+       <a href="./index.html" class="active">Home</a>
+       <a href="./farmer.html">Farmer</a>
+       <a href="#">About</a>
+       <a href="./chart.html">Chats</a>
+       <a href="#">FeedBack</a>
+   </nav>
+   <div class="icons">
+       <i class="fas fa-bars" id="menu-bars"></i>
+       <i class="fas fa-search" id="search-icon"></i>
+       <i class="fa-solid fa-heart"></i>
+       <a href="./cart.html">
+       <i class="fa-solid fa-cart-shopping"></i></a>
+   </div>
+       </header>
+    <!-- Search input -->
+    <input type="text" id="filterInput" placeholder="Search...">
+
+    <!-- Table of dummy data -->
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>John Doe</td>
+                <td>john@example.com</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>Jane Doe</td>
+                <td>jane@example.com</td>
+                <td>30</td>
+            </tr>
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+
+    <script>
+        // Get the filter input and table
+        var filterInput = document.getElementById('filterInput');
+        var dataTable = document.getElementById('dataTable');
+        var rows = dataTable.getElementsByTagName('tr');
+
+        // Add event listener for the input
+        filterInput.addEventListener('input', function () {
+            var filterValue = filterInput.value.toLowerCase();
+
+            // Loop through the rows and show/hide based on the filter
+            for (var i = 1; i < rows.length; i++) {
+                var row = rows[i];
+                var rowData = row.textContent.toLowerCase();
+
+                if (rowData.includes(filterValue)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            }
+        });
+    </script>
+<script src="./script.js"></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Processing Example</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+        .for h2{
+            margin-top: 7%;
+            text-align: center;
+        }
+    </style>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <header>
+        <i href="#" class="logo">KisanDhan</i>   
+   <nav class="navbar">
+       <a href="./index.html" class="active">Home</a>
+       <a href="./farmer.html">Farmer</a>
+       <a href="#footer">About</a>
+       <a href="./chart.html">Chats</a>
+       <a href="#">FeedBack</a>
+   </nav>
+   <div class="icons">
+       <i class="fas fa-bars" id="menu-bars"></i>
+       <i class="fas fa-search" id="search-icon"></i>
+       <i class="fa-solid fa-heart"></i>
+       <a href="./cart.html">
+       <i class="fa-solid fa-cart-shopping"></i></a>
+   </div>
+       </header>
+    <div class="for">
+
+    <h2>Payment Information</h2>
+    <form id="paymentForm">
+        <label for="cardNumber">Card Number:</label>
+        <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" required>
+
+        <label for="expiryDate">Expiry Date:</label>
+        <input type="text" id="expiryDate" placeholder="MM/YYYY" required>
+
+        <label for="cvv">CVV:</label>
+        <input type="text" id="cvv" placeholder="123" required>
+
+        <button type="button" onclick="processPayment()">Submit Payment</button>
+    </form>
+</div>
+    <script>
+        function processPayment() {
+            // In a real-world scenario, you would send this data securely to your server for processing.
+            var cardNumber = document.getElementById('cardNumber').value;
+            var expiryDate = document.getElementById('expiryDate').value;
+            var cvv = document.getElementById('cvv').value;
+
+            // Perform client-side validation if necessary
+
+            // Simulate payment processing
+            alert('Payment processed successfully!');
+            // You would typically send the payment data to your server at this point.
+        }
+    </script>
+<script src="./script.js"></script>
+</body>
+</html>
